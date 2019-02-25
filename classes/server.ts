@@ -31,12 +31,18 @@ export default class Server {
     private eschuarSockets() {
         console.log('Escuchando conexiones - sockets');
         this.io.on('connection', cliente => {
-            console.log('Cliente conectado');
+            /* console.log('Cliente conectado'); */
+/*             console.log(cliente.id); */ 
 
-            // Socket pendiente de los mensajes
+            mysocket.conectarCliente( cliente );
+            // Login de usuario
+            mysocket.nombre(cliente, this.io);
+
+           // Socket pendiente de los mensajes
             mysocket.mensaje(cliente, this.io);
             // Desconectar un cliente
             mysocket.desconectar(cliente);
+
 
 
         });
