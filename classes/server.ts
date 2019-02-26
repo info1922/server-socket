@@ -34,14 +34,17 @@ export default class Server {
             /* console.log('Cliente conectado'); */
 /*             console.log(cliente.id); */ 
 
-            mysocket.conectarCliente( cliente );
+            mysocket.conectarCliente( cliente , this.io);
             // Login de usuario
             mysocket.nombre(cliente, this.io);
+
+            // Obtener usuarios activos
+            mysocket.obtenerUsuarios(cliente, this.io);
 
            // Socket pendiente de los mensajes
             mysocket.mensaje(cliente, this.io);
             // Desconectar un cliente
-            mysocket.desconectar(cliente);
+            mysocket.desconectar(cliente, this.io);
 
 
 
